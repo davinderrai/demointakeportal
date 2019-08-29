@@ -26,7 +26,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Clean and Compile the project'
-                sh 'npm build'
+                sh 'npm run build'
             }
         }
         stage('Test') {
@@ -60,6 +60,7 @@ pipeline {
             steps {
                 sh 'id'
                 echo 'Deploy'
+				sh 'npm run deploy'
             }
         }
   }
