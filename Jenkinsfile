@@ -26,6 +26,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Clean and Compile the project'
+				sh 'whoami'
                 sh 'npm run build'
             }
         }
