@@ -11,7 +11,7 @@
     "start": "react-scripts start",
 	"clean": "rm -fr node_modules",
     "build": "rm -fr build && react-scripts build",
-	"deploy": "sudo -u bitnami aws s3 cp build/favicon.ico s3://webapp.intakeportal.caelapps.com.dev",
+	"deploy": "aws s3 cp build/favicon.ico s3://webapp.intakeportal.caelapps.com.dev",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
