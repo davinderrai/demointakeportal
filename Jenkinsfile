@@ -20,13 +20,13 @@ pipeline {
             steps {
                 git(url: env.scmUrl, branch: env.branch, credentialsId: env.credentialsIdentifier, changelog: true)
                 print env.credentialsIdentifier
-                bitbucketStatusNotify(buildState: "INPROGRESS")
+                //bitbucketStatusNotify(buildState: "INPROGRESS")
             }
         }
         stage('Build') {
             steps {
                 echo 'Clean and Compile the project'
-                //sh 'mvn clean compile test-compile'
+                sh 'npm build'
             }
         }
         stage('Test') {
@@ -72,15 +72,15 @@ pipeline {
         success {
             // send build started notifications
             slackSend (color: '#FFFF00', message: "Succeeded: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-            bitbucketStatusNotify(buildState: "SUCCESSFUL")
+            //bitbucketStatusNotify(buildState: "SUCCESSFUL")
         }
         unstable {
             slackSend (color: '#0000FF', message: "Unstable: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-            bitbucketStatusNotify(buildState: "FAILED")
+           // bitbucketStatusNotify(buildState: "FAILED")
         }
         failure {
             slackSend (color: '#FF0000', message: "Failed: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-            bitbucketStatusNotify(buildState: "FAILED")
+           // bitbucketStatusNotify(buildState: "FAILED")
         }
     }
 }
