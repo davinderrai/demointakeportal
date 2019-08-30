@@ -16,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Welcome Vanya to Intake Portal React App
         </a>
       </header>
     </div>
